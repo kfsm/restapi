@@ -1,0 +1,202 @@
+\documentclass{report}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.75em}
+\input{restful}
+
+\begin{document}
+
+\title{xxx}
+\author{}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+
+%%
+%% short description about the service.
+\section{Rationale}
+tbd.
+
+%%
+%%
+\section{Terms of Service}
+tbd.
+
+%%
+%%
+\section{Environments}
+
+\restful{
+   \env{dev}{xxx}
+   \env{stage}{xxx}   
+   \env{live}{xxx}
+}
+
+
+\section{Common behavior}
+
+%%
+%% list of media types consumed / produces by service 
+\subsection{Media Types}
+
+\subsubsection{Consumes}
+\restful{
+   \mimetype{application/ld+json} 
+            {tbd}
+}
+
+\subsubsection{Produces}
+\restful{
+   \mimetype{application/json} 
+            {tbd}
+}
+
+
+\subsection{Protocol}
+
+%%
+%% service protocols, transfer requirements, etc.
+\subsubsection{Schema}
+tbd.
+
+%%
+%% list of common request parameters (e.g. headers)
+\subsubsection{Request}
+\restful{
+   \head{Accept} 
+        {tbd}
+        
+   \head{Content-Type} 
+        {tbd}
+}
+
+%%
+%% list of common response parameters
+\subsubsection{Response}
+\restful{
+   \head{Content-Type} 
+        {tbd.}
+}
+
+%%
+%% list of plausible response codes 
+\subsubsection{Status}
+\restful{
+   \httpcode{200} {operation successfully completed}
+   \httpcode{201} {operation successfully completed, and resource was created}
+   \httpcode{406} {the supplied request does not conform API specification, requested attributes are not known}
+   \httpcode{500} {for any abnormally terminated requests}
+}
+
+%%
+%% api authentication schema
+\subsection{Authentication}
+void
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Resource model}
+
+\section{Rationale}
+tbd
+
+\section{Definition}
+
+%%
+%% a definition of the resource (domain objects), 
+%% specifies request / response structures
+\subsection{TBD}
+tbd.
+
+\resource{
+   \attr{@id}{string}{tbd}
+   \attr{@type}{string}{tbd}
+   \attr{title}{string}{tbd}
+}
+
+\paragraph{example} inline example
+
+\subsubsection{example}
+\begin{verbatim}
+code example
+\end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Interface}
+
+%%
+%% interface summary including end-point tempates 
+\section{Summary}
+tbd.
+
+\routes{
+   \uri{/collection/:abc/resource/:def} 
+       {tbd}
+}
+
+%%
+%% detailed resource specification
+\section{End-points}
+
+%%
+%% end-point specification 
+\subsection{/collection/:abc/resource/:def}
+tbd.
+
+%%
+%% method specification
+%%  - method id
+%%  - path template
+%%  - description
+%%  - preconditions, parameters, etc (use \sep to build list)
+%%  - postcondition (use \sep to build list)
+%%  - expected status codes
+\request{GET} {/collection/:abc/resource/:def}
+   {tbd}
+   {Accept: application/json \sep q = string}
+   {Content-Type: application/json}
+   {\status{200} \sep \status{404} \sep \status{500}}
+  
+\example{example}
+\begin{verbatim}
+curl -v -X GET http://localhost:8080/collection/x/resource/y
+* About to connect() to localhost port 8080 (#0)
+*   Trying 127.0.0.1... connected
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+> GET /collection/x/resource/y HTTP/1.1
+> User-Agent: curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5
+> Host: localhost:8080
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Server: MochiWeb/1.0 (Any of you quaids got a smint?)
+< Date: Fri, 01 Jun 2012 20:01:36 GMT
+< Content-Length: 175
+< Conten-Type: application/json
+< 
+< []
+* Connection #0 to host localhost left intact
+* Closing connection #0
+\end{verbatim}
+
+   
+\end{document}

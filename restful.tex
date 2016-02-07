@@ -1,0 +1,127 @@
+%%
+\usepackage{ifthen}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{url}
+\usepackage{listings}
+
+%% caption less table to specify restful primitives
+\newcommand{\restful}[1]
+{
+\begin{center}
+\begin{tabular}{l p{12cm}}
+\hline
+#1
+\hline
+\end{tabular}
+\end{center}
+\vspace{6pt}
+}
+
+
+%% caption less table to specify restful uri
+\newcommand{\routes}[1]
+{
+\begin{center}
+\begin{tabular}{p{\textwidth}}
+\hline
+#1
+\hline
+\end{tabular}
+\end{center}
+\vspace{6pt}
+}
+%
+%
+%
+  
+\newcommand{\mimetype}[2]{#1 & #2 \\\noalign{\smallskip}}
+\newcommand{\head}[2]{#1 & #2 \\\noalign{\smallskip}}
+\newcommand{\uri}[2]{\url{#1} \\ #2 \vspace{8pt} \\\noalign{\smallskip}}
+\newcommand{\env}[2]{#1 & #2 \\\noalign{\smallskip}}
+%
+
+%%% resource definition table
+\newcommand{\resource}[1]
+{
+\begin{center}
+\begin{tabular}{l l p{12cm}}
+\hline
+#1
+\hline
+\end{tabular}
+\end{center}
+\vspace{6pt}
+}
+\newcommand{\attr}[3]{{\tt #1} & #2 & #3 \\\noalign{\smallskip}}
+
+%
+%
+\newcommand{\request}[6]
+{
+\begin{center}
+\begin{tabular}{l p{12cm}}
+\hline
+Synopsis:  & #1 \url{#2} \\\noalign{\smallskip}
+           & #3     \vspace{4pt}\\ 
+Precondition:  & #4 \vspace{4pt}\\
+Postcondition: & #5 \vspace{4pt}\\
+Status code:   & #6 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace{6pt}
+}
+
+\newcommand{\sep}{\\\noalign{\smallskip} &}
+
+\newcommand{\status}[1]
+{
+\ifthenelse{\equal{#1}{100}}{100 Continue}{}%
+\ifthenelse{\equal{#1}{101}}{101 Switching Protocols}{}%
+\ifthenelse{\equal{#1}{200}}{200 OK}{}%
+\ifthenelse{\equal{#1}{201}}{201 Created}{}%
+\ifthenelse{\equal{#1}{202}}{202 Accepted}{}%
+\ifthenelse{\equal{#1}{203}}{203 Non-Authoritative Information}{}%
+\ifthenelse{\equal{#1}{204}}{204 No Content}{}%
+\ifthenelse{\equal{#1}{205}}{205 Reset Content}{}%
+\ifthenelse{\equal{#1}{206}}{206 Partial Content}{}%
+\ifthenelse{\equal{#1}{300}}{300 Multiple Choices}{}%
+\ifthenelse{\equal{#1}{301}}{301 Moved Permanently}{}%
+\ifthenelse{\equal{#1}{302}}{302 Found}{}%
+\ifthenelse{\equal{#1}{303}}{303 See Other}{}%
+\ifthenelse{\equal{#1}{304}}{304 Not Modified}{}%
+\ifthenelse{\equal{#1}{307}}{307 Temporary Redirect}{}%
+\ifthenelse{\equal{#1}{302}}{302 Found}{}%
+\ifthenelse{\equal{#1}{400}}{400 Bad Request}{}%
+\ifthenelse{\equal{#1}{401}}{401 Unauthorized}{}%
+\ifthenelse{\equal{#1}{402}}{402 Payment Required}{}%
+\ifthenelse{\equal{#1}{403}}{403 Forbidden}{}%
+\ifthenelse{\equal{#1}{404}}{404 Not Found}{}%
+\ifthenelse{\equal{#1}{405}}{405 Method Not Allowed}{}%
+\ifthenelse{\equal{#1}{406}}{406 Not Acceptable}{}%
+\ifthenelse{\equal{#1}{407}}{407 Proxy Authentication Required}{}%
+\ifthenelse{\equal{#1}{408}}{408 Request Timeout}{}%
+\ifthenelse{\equal{#1}{409}}{409 Conflict}{}%
+\ifthenelse{\equal{#1}{410}}{410 Gone}{}%
+\ifthenelse{\equal{#1}{411}}{411 Length Required}{}%
+\ifthenelse{\equal{#1}{412}}{412 Precondition Failed}{}%
+\ifthenelse{\equal{#1}{413}}{413 Request Entity Too Large}{}%
+\ifthenelse{\equal{#1}{414}}{414 Request-URI Too Long}{}%
+\ifthenelse{\equal{#1}{415}}{415 Unsupported Media Type}{}%
+\ifthenelse{\equal{#1}{416}}{416 Requested Range Not Satisfiable}{}%
+\ifthenelse{\equal{#1}{417}}{417 Expectation Failed}{}%
+\ifthenelse{\equal{#1}{422}}{422 Unprocessable Entity}{}%
+\ifthenelse{\equal{#1}{500}}{500 Internal Server Error}{}%
+\ifthenelse{\equal{#1}{501}}{501 Not Implemented}{}%
+\ifthenelse{\equal{#1}{502}}{502 Bad Gateway}{}%
+\ifthenelse{\equal{#1}{503}}{503 Service Unavailable}{}%
+\ifthenelse{\equal{#1}{504}}{504 Gateway Timeout}{}%
+\ifthenelse{\equal{#1}{505}}{505 HTTP Version Not Supported}{}%
+}
+
+\newcommand{\httpcode}[2]{\status{#1} & #2 \\\noalign{\smallskip}}
+
+\newcommand{\example}[1]{\noindent {\bf #1}}
+
+
+
